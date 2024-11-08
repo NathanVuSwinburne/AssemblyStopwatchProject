@@ -1,0 +1,818 @@
+// Set up interrupts to handle keypad input.
+      Push {R0}         ; Push the value of the R0 register onto the stack at line 2 and pop at line 7 to preserve the original value of R0.
+      MOV R0, #keypress ; Move the immediate value 'keypress' into register R0.
+      MOV R0, #1        ; Move the immediate value 1 into register R0, overwriting the previous value from line 3.
+      STR R0, .KeyboardMask ; setting up a mask for keyboard input.
+      STR R0, .InterruptRegister ; enabling interrupts for keyboard input.
+      Pop {R0}          ; Pop the value from the stack back into register R0. This restores the original value of R0 that was pushed onto the stack at the beginning.
+// Letter ; S From line 8 to line 210, I write and decorate the screen with words like: "Stopwatch", "Elapsed Time", and "Split Time""
+      Push {R0, R1}     ; Preserve the values of R0 and R1 by pushing them onto the stack.
+      MOV R0, #83       ; Move the ASCII value for 'S' into register R0.
+      MOV R1, #.CharScreen ; Move the base address of the character screen into register R1.
+      ADD R1, R1, #11   ; Increment the address to point to the appropriate location for the letter 'S'.
+      STRB R0, [R1]     ; Store the ASCII value for 'S' at the calculated memory address.
+      Pop {R0, R1}      ; Restore the values of R0 and R1 from the stack.
+// ... (similar comments for the subsequent letters)
+// letter t 
+      Push {R0, R1} 
+      MOV R0,#116
+      MOV R1,#.CharScreen
+      ADD R1, R1, #12
+      STRB R0,[R1] 
+      Pop {R0, R1}
+// letter o
+      Push {R0, R1} 
+      MOV R0,#111
+      MOV R1,#.CharScreen
+      ADD R1, R1, #13
+      STRB R0,[R1] 
+      Pop {R0, R1}
+// letter p
+      Push {R0, R1} 
+      MOV R0,#112
+      MOV R1,#.CharScreen
+      ADD R1, R1, #14
+      STRB R0,[R1] 
+      Pop {R0, R1}
+// letter w
+      Push {R0, R1} 
+      MOV R0,#119
+      MOV R1,#.CharScreen
+      ADD R1, R1, #15
+      STRB R0,[R1] 
+      Pop {R0, R1}
+// letter a
+      Push {R0, R1} 
+      MOV R0,#97
+      MOV R1,#.CharScreen
+      ADD R1, R1, #16
+      STRB R0,[R1] 
+      Pop {R0, R1}
+// letter t
+      Push {R0, R1} 
+      MOV R0,#116
+      MOV R1,#.CharScreen
+      ADD R1, R1, #17
+      STRB R0,[R1] 
+      Pop {R0, R1}
+// letter c
+      Push {R0, R1} 
+      MOV R0,#99
+      MOV R1,#.CharScreen
+      ADD R1, R1, #18
+      STRB R0,[R1] 
+      Pop {R0, R1}
+// letter h
+      Push {R0, R1} 
+      MOV R0,#104
+      MOV R1,#.CharScreen
+      ADD R1, R1, #19
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//   letter E    
+      Push {R0, R1} 
+      MOV R0,#69
+      MOV R1,#.CharScreen
+      ADD R1, R1, #35
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter l
+      Push {R0, R1} 
+      MOV R0,#108
+      MOV R1,#.CharScreen
+      ADD R1, R1, #36
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter a
+      Push {R0, R1} 
+      MOV R0,#97
+      MOV R1,#.CharScreen
+      ADD R1, R1, #37
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter p
+      Push {R0, R1} 
+      MOV R0,#112
+      MOV R1,#.CharScreen
+      ADD R1, R1, #38
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter s
+      Push {R0, R1} 
+      MOV R0,#115
+      MOV R1,#.CharScreen
+      ADD R1, R1, #39
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter e
+      Push {R0, R1} 
+      MOV R0,#101
+      MOV R1,#.CharScreen
+      ADD R1, R1, #40
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter d
+      Push {R0, R1} 
+      MOV R0,#100
+      MOV R1,#.CharScreen
+      ADD R1, R1, #41
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter T
+      Push {R0, R1} 
+      MOV R0,#84
+      MOV R1,#.CharScreen
+      ADD R1, R1, #43
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter i
+      Push {R0, R1} 
+      MOV R0,#105
+      MOV R1,#.CharScreen
+      ADD R1, R1, #44
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter m
+      Push {R0, R1} 
+      MOV R0,#109
+      MOV R1,#.CharScreen
+      ADD R1, R1, #45
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter e
+      Push {R0, R1} 
+      MOV R0,#101
+      MOV R1,#.CharScreen
+      ADD R1, R1, #46
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter S
+      Push {R0, R1} 
+      MOV R0,#83
+      MOV R1,#.CharScreen
+      ADD R1, R1, #48
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter p
+      Push {R0, R1} 
+      MOV R0,#112
+      MOV R1,#.CharScreen
+      ADD R1, R1, #49
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter l
+      Push {R0, R1} 
+      MOV R0,#108
+      MOV R1,#.CharScreen
+      ADD R1, R1, #50
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter i
+      Push {R0, R1} 
+      MOV R0,#105
+      MOV R1,#.CharScreen
+      ADD R1, R1, #51
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter t
+      Push {R0, R1} 
+      MOV R0,#116
+      MOV R1,#.CharScreen
+      ADD R1, R1, #52
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter T
+      Push {R0, R1} 
+      MOV R0,#84
+      MOV R1,#.CharScreen
+      ADD R1, R1, #54
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter i
+      Push {R0, R1} 
+      MOV R0,#105
+      MOV R1,#.CharScreen
+      ADD R1, R1, #55
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter m
+      Push {R0, R1} 
+      MOV R0,#109
+      MOV R1,#.CharScreen
+      ADD R1, R1, #56
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//letter e
+      Push {R0, R1} 
+      MOV R0,#101
+      MOV R1,#.CharScreen
+      ADD R1, R1, #57
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second unit row for the elapsed time ; From line 211 to line 420, I add the clock and 5 split time clocks
+      Push {R0, R1}     ; Preserve the values of R0 and R1 by pushing them onto the stack.
+      MOV R0, #48       ; Move the ASCII value for '0' into register R0.
+      MOV R1, #.CharScreen ; Move the base address of the character screen into register R1.
+      ADD R1, R1, #75   ; Increment the address to point to the appropriate location for the digit '0'.
+      STRB R0, [R1]     ; Store the ASCII value for '0' at the calculated memory address.
+      Pop {R0, R1}      ; Restore the values of R0 and R1 from the stack.
+// ... (similar comments for the subsequent letters)
+//second tens row for the elapsed time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #74
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//colon for the elapsed time
+      Push {R0, R1} 
+      MOV R0,#58
+      MOV R1,#.CharScreen
+      ADD R1, R1, #73
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute ones row for the elapsed time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #72
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute tens row for the elapsed time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #71
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second ones row for the first split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #83
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second tens row for the first split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #84
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//colon for the first split time
+      Push {R0, R1} 
+      MOV R0,#58
+      MOV R1,#.CharScreen
+      ADD R1, R1, #85
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute ones row for the first split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #86
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute tens row for the first split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #87
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second ones row for the second split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #115
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second tens row for the second split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #116
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//colon for the second split time
+      Push {R0, R1} 
+      MOV R0,#58
+      MOV R1,#.CharScreen
+      ADD R1, R1, #117
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute ones row for the second split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #118
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute tens row for the second split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #119
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second ones row for the third split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #147
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second tens row for the third split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #148
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//colon for the third split time
+      Push {R0, R1} 
+      MOV R0,#58
+      MOV R1,#.CharScreen
+      ADD R1, R1, #149
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute ones row for the third split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #150
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute tens row for the third split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #151
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second ones row for the fourth split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #179
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second tens row for the fourth split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #180
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//colon for the fourth split time
+      Push {R0, R1} 
+      MOV R0,#58
+      MOV R1,#.CharScreen
+      ADD R1, R1, #181
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute ones row for the fourth split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #182
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute tens row for the fourth split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #183
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second ones row for the fifth split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #211
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//second tens row for the fifth split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #212
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//colon for the fifth split time
+      Push {R0, R1} 
+      MOV R0,#58
+      MOV R1,#.CharScreen
+      ADD R1, R1, #213
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute ones row for the fifth split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #214
+      STRB R0,[R1] 
+      Pop {R0, R1}
+//minute tens row for the fifth split time
+      Push {R0, R1} 
+      MOV R0,#48
+      MOV R1,#.CharScreen
+      ADD R1, R1, #215
+      STRB R0,[R1] 
+      Pop {R0, R1}
+      MOV R1, #48       ; set the R1 as a place to hold second ones row
+      MOV R2, #48       ; set the R2 as a place to hold second tens row
+      MOV R3, #48       ; set the R3 as a place to hold minute ones row
+      MOV R4, #48       ; set the R4 as a place to hold minute tens row
+// press start 
+infiniteloop:           ; From line 426 to 428, I set an infinite loop for start, pause, and reset functionalities.
+      B keypress
+      B infiniteloop
+// Stopwatch
+stopwatch:
+      Push {LR}
+      B increment_second_ones_row ; the idea is that I create a stopwatch that will continuously increment the second ones row time to "9" and reset to "0"
+      Pop {LR}
+      MOV LR, #0x5d0    ;important because it will return to line 439 after meet RET instruction in "increment_second_tens_row" function and continue the time
+      CMP R1, #48
+      BEQ increment_second_tens_row ; if the second ones row time is "0", which means it reseted, it will increment the second tens row 1 time
+      MOV LR, #0x5dc    ;important because it will return to line 442 after meet RET instruction in "Reset_seconds" function and continue the time
+      CMP R2, #54 
+      BEQ Reset_seconds ;  if the second tens row time is "9", it will then reset seconds rows to "0"
+      MOV LR, #0x5e8    ;important because it will return to line 445 after meet RET instruction in "increment_minute_ones_row" function and continue the time
+      CMP R2, #48
+      BEQ increment_minute_ones_row ;if the second tens row time is "0", which means it reseted, it will increment the minute ones row 1 time
+      MOV LR, #0x5f4    ;important because it will return to line 448 after meet RET instruction in "increment_minute_tens_row" function and continue the time
+      CMP R3, #58
+      BEQ increment_minute_tens_row ; if the R3 at value 58 which is ":", it will increase minute tens row 1 times
+      MOV LR, #0x600    ;important because it will return to line 451 after meet RET instruction in "Reset_minute_ones_rows" function and continue the time
+      CMP R3, #58
+      BEQ Reset_minute_ones_rows ; if the R3 at value 58 which is ":", it will reset minute ones row
+      MOV LR, #0x60c    ;important because it will return to line 454 after meet RET instruction in "Reset" function and continue the time
+      CMP R4, #58
+      BEQ Reset         ; after the time reach "99:99" , it will reset to "00:00"
+      B keypress2       ; this line of instruction is to check the interrupt routine everytime the keyboard is pressed
+      B stopwatch       ; this loop is to loop back to continue the process.
+End:
+      HALT
+increment_second_ones_row:
+      ADD R1, R1, #1    ; Increment the value in register R1, representing the second ones digit.
+//
+      Push {R2}         ; Preserve the value of R2 by pushing it onto the stack.
+      MOV R2, #.CharScreen ; Move the base address of the character screen into register R2.
+      ADD R2, R2, #75   ; Increment the address to point to the location for the second ones digit.
+      STRB R1, [R2]     ; display the second ones row.
+      Pop {R2}          ; Restore the value of R2 from the stack.
+//
+      Push {LR}         ; Preserve the Link Register (LR), which is important for returning from subroutines.
+      BL delay          ; Call the delay subroutine.
+      Pop {LR}          ; Restore the Link Register.
+//
+      B keypress2       ; Branch to the keypress2 label.
+continue:               ; this label is for after execute the keypress2 function, it can continue the process.
+      CMP R1, #57       ; Compare the value in R1 (second ones digit) with the ASCII value for '9'.
+      BLT increment_second_ones_row ; If less than, branch to increment_second_ones_row to continue incrementing.
+      Push {LR}         ; Preserve the Link Register.
+      BL Reset_seconds_ones ; Call the subroutine to reset the second ones digit.
+      Pop {LR}          ; Restore the Link Register.
+      MOV LR, #0x5c4    ; Set the Link Register to continue the process, which is likely significant.
+      RET               ; Return from the subroutine.
+increment_second_tens_row:
+      Push {R3}         ; Preserve the value of R3 by pushing it onto the stack.
+      ADD R2, R2, #1    ; Increment the value in register R2, representing the second tens digit.
+      MOV R3, #.CharScreen ; Move the base address of the character screen into register R3.
+      ADD R3, R3, #74   ; Increment the address to point to the location for the second tens digit.
+      STRB R2, [R3]     ; Store the updated value at the calculated memory address.
+      Pop {R3}          ; Restore the value of R3 from the stack.
+//
+      Push {LR}         ; Preserve the Link Register (LR), which is important for returning from subroutines.
+      BL delay          ; Call the delay subroutine.
+      Pop {LR}          ; Restore the Link Register.
+//
+      RET               ; Return from the subroutine.
+increment_minute_ones_row:
+      Push {R4}         ; Preserve the value of R4 by pushing it onto the stack.
+      ADD R3, R3, #1    ; Increment the value in register R3, representing the minute ones digit.
+      MOV R4, #.CharScreen ; Move the base address of the character screen into register R4.
+      ADD R4, R4, #72   ; Increment the address to point to the location for the minute ones digit.
+      STRB R3, [R4]     ; Store the updated value at the calculated memory address.
+      Pop {R4}          ; Restore the value of R4 from the stack.
+      RET               ; Return from the subroutine.
+increment_minute_tens_row:
+      Push {R5, R4}     ; Preserve the values of R5 and R4 by pushing them onto the stack.
+      MOV R4, #.CharScreen ; Move the base address of the character screen into register R4.
+      ADD R4, R4, #72   ; Increment the address to point to the location for the minute tens digit.
+      STRB R3, [R4]     ; Store the updated value (minute ones digit) at the calculated memory address.
+      Pop {R4}          ; Restore the value of R4 from the stack.
+      ADD R4, R4, #1    ; Increment the value in R4, representing the minute tens digit.
+      MOV R5, #.CharScreen ; Move the base address of the character screen into register R5.
+      ADD R5, R5, #71   ; Increment the address to point to the location for the minute tens digit.
+      STRB R4, [R5]     ; Store the updated value at the calculated memory address.
+      Pop {R5}          ; Restore the value of R5 from the stack.
+      RET               ; Return from the subroutine.
+//delay for one second
+delay:
+      Push {R0, R1, R2} ; Preserve the values of R0, R1, and R2 by pushing them onto the stack.
+      MOV R0, #1        ; Set the delay time to 1 (adjustable based on the desired delay).
+      LDR R1, .Time     ; Load the current time into register R1 as the starting point for the delay.
+timer:
+      LDR R2, .Time     ; Load the current time into register R2 for comparison.
+      SUB R2, R2, R1    ; Calculate the elapsed time by subtracting the starting time from the current time.
+      CMP R2, R0        ; Compare the elapsed time with the desired delay time.
+      BLT timer         ; If the elapsed time is less than the desired delay time, repeat the loop.
+      Pop {R0, R1, R2}  ; Restore the preserved values of R0, R1, and R2 from the stack.
+      RET               ; Return from the subroutine, completing the delay.
+Reset_seconds_ones:
+      MOV R1, #48       ; Move the ASCII code for '0' into register R1.
+      Push {R2}         ; Push the value of register R2 onto the stack.
+      MOV R2, #.CharScreen ; Load the memory address of CharScreen into register R2.
+      ADD R2, R2, #75   ; Add an offset to R2 to point to the location of the seconds ones digit.
+      STRB R1, [R2]     ; Store the value in R1 (ASCII '0') at the specified memory location.
+      Pop {R2}          ; Pop the value from the stack back into register R2.
+      RET               ; Return from the subroutine.
+Reset_seconds:          ; all reset function works the same way. 
+      MOV R1, #48
+      Push {R2}
+      MOV R2,#.CharScreen
+      ADD R2, R2, #75
+      STRB R1,[R2] 
+      Pop {R2}
+      MOV R2,#48
+      Push {R3}
+      MOV R3,#.CharScreen
+      ADD R3, R3, #74
+      STRB R2,[R3] 
+      Pop {R3}
+      RET
+Reset_minute_ones_rows:
+      Push {R6} 
+      MOV R3,#48
+      MOV R6,#.CharScreen
+      ADD R6, R6, #72
+      STRB R3,[R6] 
+      Pop {R6}
+Reset:
+      Push {R2}
+      MOV R1,#48
+      MOV R2,#.CharScreen
+      ADD R2, R2, #75
+      STRB R1,[R2]
+      Pop {R2}
+      Push {R3}
+      MOV R2,#48
+      MOV R3,#.CharScreen
+      ADD R3, R3, #74
+      STRB R2,[R3]
+      Pop {R3}
+      Push {R4}
+      MOV R3,#48
+      MOV R4,#.CharScreen
+      ADD R4, R4, #72
+      STRB R3,[R4]
+      Pop {R4}
+      Push {R5}
+      MOV R4,#48
+      MOV R5,#.CharScreen
+      ADD R5, R5, #71
+      STRB R4,[R5]
+      Pop {R5}
+//
+      Push {R6}
+      MOV R5,#48
+      MOV R6,#.CharScreen
+      ADD R6, R6, #83
+      STRB R5,[R6]
+      Pop {R6}
+//
+      Push {R7}
+      MOV R6,#48
+      MOV R7,#.CharScreen
+      ADD R7, R7, #84
+      STRB R6,[R7]
+      Pop {R7}
+//
+      Push {R8}
+      MOV R7,#48
+      MOV R8,#.CharScreen
+      ADD R8, R8, #86
+      STRB R7,[R8]
+      Pop {R8}
+//
+      Push {R9}
+      MOV R8,#48
+      MOV R9,#.CharScreen
+      ADD R9, R9, #87
+      STRB R8,[R9]
+      Pop {R9}
+//
+      B endreset
+      RET
+pause:
+      B keypress2
+      B pause
+// 
+resetsplitorder:        ; this function will change the order of split time
+      MOV R10, #0       ; Initialize R10 to 0, indicating the starting point of the split order.
+splitorder:
+      ADD R10, R10, #1  ; Increment the split order by 1.
+      CMP R10, #1       ; Compare the split order with 1.
+      BEQ split1        ; If equal, branch to split1.
+endsplit1:
+      CMP R10, #2       ; Compare the split order with 2.
+      BEQ split2        ; If equal, branch to split2.
+endsplit2:
+      CMP R10, #3       ; Compare the split order with 3.
+      BEQ split3        ; If equal, branch to split3.
+endsplit3:
+      CMP R10, #4       ; Compare the split order with 4.
+      BEQ split4        ; If equal, branch to split4.
+endsplit4:
+      CMP R10, #5       ; Compare the split order with 5.
+      BEQ split5        ; If equal, branch to split5.
+endsplit5:
+      CMP R10, #6       ; Compare the split order with 6.
+      BEQ resetsplitorder ; If equal, reset the split order to 0.
+      B endsplit        ; Branch to endsplit.
+//
+split1:
+      PUSH {R5-R8}      ; Preserve registers R5-R8 on the stack.
+// Split second ones row for the first split time.
+      Push {R1}         ; Preserve R1 on the stack.
+      MOV R5, R1        ; Copy the value of R1 to R5.
+      MOV R1, #.CharScreen ; Load the base address of the character screen.
+      ADD R1, R1, #87   ; Adjust the address to the position for the first split second ones row.
+      STRB R5, [R1]     ; Store the value of R5 in the memory location pointed by R1.
+      Pop {R1}          ; Restore the original value of R1.
+// Split second tens row for the first split time.
+      Push {R1}         ; Preserve R1 on the stack.
+      MOV R6, R2        ; Copy the value of R2 to R6.
+      MOV R1, #.CharScreen ; Load the base address of the character screen.
+      ADD R1, R1, #86   ; Adjust the address to the position for the first split second tens row.
+      STRB R6, [R1]     ; Store the value of R6 in the memory location pointed by R1.
+      Pop {R1}          ; Restore the original value of R1.
+// Split minute ones row for the first split time.
+      Push {R1}         ; Preserve R1 on the stack.
+      MOV R7, R3        ; Copy the value of R3 to R7.
+      MOV R1, #.CharScreen ; Load the base address of the character screen.
+      ADD R1, R1, #84   ; Adjust the address to the position for the first split minute ones row.
+      STRB R7, [R1]     ; Store the value of R7 in the memory location pointed by R1.
+      Pop {R1}          ; Restore the original value of R1.
+// Split minute tens row for the first split time.
+      Push {R1}         ; Preserve R1 on the stack.
+      MOV R8, R4        ; Copy the value of R4 to R8.
+      MOV R1, #.CharScreen ; Load the base address of the character screen.
+      ADD R1, R1, #83   ; Adjust the address to the position for the first split minute tens row.
+      STRB R8, [R1]     ; Store the value of R8 in the memory location pointed by R1.
+      Pop {R1}          ; Restore the original value of R1.
+      POP {R5-R8}       ; Restore registers R5-R8 from the stack.
+      B endsplit1       ; Branch to endsplit1.
+split2:                 ; remains the same till split5
+      PUSH {R5-R8}
+//split second ones row for the second split time
+      Push {R1} 
+      MOV R5, R1
+      MOV R1,#.CharScreen
+      ADD R1, R1, #119
+      STRB R5,[R1] 
+      Pop {R1}
+//split second tens row for the second split time
+      Push {R1} 
+      MOV R6, R2
+      MOV R1,#.CharScreen
+      ADD R1, R1, #118
+      STRB R6,[R1] 
+      Pop {R1}
+//split minute ones row for the second split time
+      Push {R1} 
+      MOV R7, R3
+      MOV R1,#.CharScreen
+      ADD R1, R1, #116
+      STRB R7,[R1] 
+      Pop {R1}
+//split minute tens row for the second split time
+      Push {R1} 
+      MOV R8, R4
+      MOV R1,#.CharScreen
+      ADD R1, R1, #115
+      STRB R8,[R1] 
+      Pop {R1}
+      POP {R5-R8}
+      B endsplit2
+split3:
+      PUSH {R5-R8}
+//split second ones row for the third split time
+      Push {R1} 
+      MOV R5, R1
+      MOV R1,#.CharScreen
+      ADD R1, R1, #151
+      STRB R5,[R1] 
+      Pop {R1}
+//split second tens row for the third split time
+      Push {R1} 
+      MOV R6, R2
+      MOV R1,#.CharScreen
+      ADD R1, R1, #150
+      STRB R6,[R1] 
+      Pop {R1}
+//split minute ones row for the third split time
+      Push {R1} 
+      MOV R7, R3
+      MOV R1,#.CharScreen
+      ADD R1, R1, #148
+      STRB R7,[R1] 
+      Pop {R1}
+//split minute tens row for the third split time
+      Push {R1} 
+      MOV R8, R4
+      MOV R1,#.CharScreen
+      ADD R1, R1, #147
+      STRB R8,[R1] 
+      Pop {R1}
+      POP {R5-R8}
+      B endsplit3
+split4:
+      PUSH {R5-R8}
+//split second ones row for the fourth split time
+      Push {R1} 
+      MOV R5, R1
+      MOV R1,#.CharScreen
+      ADD R1, R1, #183
+      STRB R5,[R1] 
+      Pop {R1}
+//split second tens row for the fourth split time
+      Push {R1} 
+      MOV R6, R2
+      MOV R1,#.CharScreen
+      ADD R1, R1, #182
+      STRB R6,[R1] 
+      Pop {R1}
+//split minute ones row for the fourth split time
+      Push {R1} 
+      MOV R7, R3
+      MOV R1,#.CharScreen
+      ADD R1, R1, #180
+      STRB R7,[R1] 
+      Pop {R1}
+//split minute tens row for the fourth split time
+      Push {R1} 
+      MOV R8, R4
+      MOV R1,#.CharScreen
+      ADD R1, R1, #179
+      STRB R8,[R1] 
+      Pop {R1}
+      POP {R5-R8}
+      B endsplit4
+split5:
+      PUSH {R5-R8}
+//split second ones row for the fifth split time
+      Push {R1} 
+      MOV R5, R1
+      MOV R1,#.CharScreen
+      ADD R1, R1, #215
+      STRB R5,[R1] 
+      Pop {R1}
+//split second tens row for the fifth split time
+      Push {R1} 
+      MOV R6, R2
+      MOV R1,#.CharScreen
+      ADD R1, R1, #214
+      STRB R6,[R1] 
+      Pop {R1}
+//split minute ones row for the fifth split time
+      Push {R1} 
+      MOV R7, R3
+      MOV R1,#.CharScreen
+      ADD R1, R1, #212
+      STRB R7,[R1] 
+      Pop {R1}
+//split minute tens row for the fifth split time
+      Push {R1} 
+      MOV R8, R4
+      MOV R1,#.CharScreen
+      ADD R1, R1, #211
+      STRB R8,[R1] 
+      Pop {R1}
+      POP {R5-R8}
+      B endsplit5
+// Interrupts routine
+keypress:
+      LDR R0, .LastKey  ; Load the value of the LastKey variable into register R0.
+      CMP R0, #67       ; Compare the value in R0 with the ASCII code for 'C'.
+      BEQ stopwatch     ; Branch to the stopwatch label if the condition is true.
+endreset:
+      B infiniteloop    ; Branch to the infiniteloop label.
+      RFE               ; Return from exception.
+keypress2:
+      LDR R0, .LastKey  ; Load the value of the LastKey variable into register R0.
+      CMP R0, #80       ; Compare the value in R0 with the ASCII code for 'P'.
+      BEQ pause         ; Branch to the pause label if the condition is true.
+      CMP R0, #69       ; Compare the value in R0 with the ASCII code for 'E'.
+      BEQ End           ; Branch to the End label if the condition is true.
+      CMP R0, #82       ; Compare the value in R0 with the ASCII code for 'R' (Reset).
+      BEQ Reset         ; Branch to the Reset label if the condition is true.
+      LDR R0, .LastKeyAndReset ; Load the value of the LastKeyAndReset variable into register R0.
+      CMP R0, #83       ; Compare the value in R0 with the ASCII code for 'S'.
+      BEQ splitorder    ; Branch to the splitorder label if the condition is true.
+endsplit:
+      B continue        ; Branch to the continue label.
+      RFE               ; Return from exception.
